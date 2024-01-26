@@ -1,0 +1,19 @@
+name: Run Workflow on Self-Hosted Runner
+
+on:
+  workflow_run:
+    workflows: ["Setup Self-Hosted Runner"]
+    types:
+      - completed
+
+jobs:
+  run_workflow:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run Workflow on Self-Hosted Runner
+      run: |
+        ./run.sh
